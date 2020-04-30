@@ -1,0 +1,29 @@
+#Configure Greenlight
+Copy sample.env filr to .env file and you’ll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
+
+Greenlight needs a secret key in order to run in production. To generate this, run:
+
+docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
+Inside your .env file, set the SECRET_KEY_BASE option to this key. You don’t need to surround it in quotations.
+
+Setting BigBlueButton CredentialsAnchor link for: setting bigbluebutton credentials
+By default, your Greenlight instance will automatically connect to test-install.blindsidenetworks.com if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it’s installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
+
+sudo bbb-conf --secret
+
+In your .env file, set the BIGBLUEBUTTON_ENDPOINT to the URL, and set BIGBLUEBUTTON_SECRET to the secret. If in case you are using Scalelite 
+BIGBLUEBUTTON_ENDPOINT should be like "https://test.example.com/bigbluebutton/api".
+
+#Creating an Administrator AccountAnchor
+To create an Administrator account with the default values, in the Greenlight directory, run the following command:
+
+docker exec greenlight-v2 bundle exec rake admin:create
+
+If you would like to configure the name, email, or password of the Administrator account, replace the previous command with this:
+
+docker exec greenlight-v2 bundle exec rake user:create["name","email","password","admin"]
+
+For creating user. 
+
+docker exec greenlight-v2 bundle exec rake user:create["name","email","password","user"]
+
