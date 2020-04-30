@@ -1,4 +1,4 @@
-#Configure Greenlight
+<h2>Configure Greenlight</h2>
 Copy sample.env filr to .env file and you’ll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
 
 Greenlight needs a secret key in order to run in production. To generate this, run:
@@ -14,7 +14,7 @@ sudo bbb-conf --secret
 In your .env file, set the BIGBLUEBUTTON_ENDPOINT to the URL, and set BIGBLUEBUTTON_SECRET to the secret. If in case you are using Scalelite 
 BIGBLUEBUTTON_ENDPOINT should be like "https://test.example.com/bigbluebutton/api".
 
-#Creating an Administrator AccountAnchor
+<h2>Creating an Administrator Account</h2>
 To create an Administrator account with the default values, in the Greenlight directory, run the following command:
 
 docker exec greenlight-v2 bundle exec rake admin:create
